@@ -20,9 +20,10 @@ btn.addEventListener("click", () => {
 
 function timer() {
   interval = setInterval(() => {
-    timepara.innerText = `Time:${--time}`;
+    --time;
+    timepara.innerText = `Time:${time}`;
 
-    if (time === 1) {
+    if (time === 0) {
       endgame();
       score = 0;
       time = 20;
