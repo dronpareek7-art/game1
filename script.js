@@ -4,6 +4,7 @@ let redbox = document.querySelector(".redbox");
 let btn = document.querySelector(".button");
 let info = document.querySelector(".info");
 let main = document.querySelector(".main");
+let instruction = document.querySelector(".instructions");
 
 let time = 20;
 let interval;
@@ -12,10 +13,12 @@ let score = 0;
 btn.addEventListener("click", () => {
   redbox.style.display = "flex";
   info.style.display = "flex";
-  btn.disabled = true;
-
+  btn.style.display = "none";
+  instruction.style.display = "none";
   timer();
-  random();
+  timepara.innerText = `Time:${time}`;
+
+  scorepara.innerText = `Score : ${score}`;
 });
 
 function timer() {
@@ -28,7 +31,7 @@ function timer() {
       score = 0;
       time = 20;
     }
-  },1000);
+  }, 1000);
 }
 
 redbox.addEventListener("click", () => {
@@ -43,5 +46,7 @@ function endgame() {
   clearInterval(interval);
   info.style.display = "none";
   scorepara.innerHTML = "";
+  timepara.innerText = "";
   alert(`Your score is ${score}`);
+  btn.style.display = "block";
 }
